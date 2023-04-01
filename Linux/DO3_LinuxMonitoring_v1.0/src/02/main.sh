@@ -2,7 +2,7 @@
 
 main() {
   result=$(output)
-  echo $result
+  echo "$result"
   save
 }
 
@@ -26,7 +26,7 @@ output() {
 }
 
 save() {
-  echo -e \n
+  echo
   read -p "Save result? [Y/n]" input
   if [[ $input =~ ([Yy]|$^) ]]; then
     fileName=$(date +"%d_%m_%Y_%H_%M_%S".status)
