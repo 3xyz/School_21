@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+main() {
+  result=$(output)
+  echo $result
+  save
+}
+
 output() {
   echo "HOSTNAME        = $(hostname)"
   echo "TIMEZONE        = $(timedatectl | grep "Time zone" | awk '{print $3, $4, $5}')"
@@ -18,13 +24,16 @@ output() {
   echo "SPACE_ROOT_USED = $(df -hk | grep "\/$" | awk '{printf("%.2f\n",$3 / 1024)}') Mb"
   echo "SPACE_ROOT_FREE = $(df -hk | grep "\/$" | awk '{printf("%.2f\n",$4 / 1024)}') Mb"
 }
-result=$(output)
-echo -e "$result\n"
 
-read -p "Save result? [Y/n]" input
-if [[ $input =~ ([Yy]|$^) ]]; then
-  fileName=$(date +"%d_%m_%Y_%H_%M_%S".status)
-  filePath="$(pwd)/$fileName"
-  echo "$result" > $filePath
-  echo -e "\nWrited\n$filePath"
-fi
+save() {
+  echo -e \n
+  read -p "Save result? [Y/n]" input
+  if [[ $input =~ ([Yy]|$^) ]]; then
+    fileName=$(date +"%d_%m_%Y_%H_%M_%S".status)
+    filePath="$(pwd)/$fileName"
+    echo "$result" > $filePath
+    echo -e "\nWrited\n$filePath"
+  fi
+}
+
+main

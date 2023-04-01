@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 checkInput() {
-  if [[ $# = 4 ]]; then
+  if [[ $# == 4 ]]; then
     for i in "$@"; do
       if ! [[ $i =~ ^[1-6]$ ]]; then
         error "given arg - \"$i\" while expected valuve in [1-6]"

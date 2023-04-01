@@ -27,6 +27,7 @@ source checkInput.sh
 source misc.sh
 
 main() {
+  # checkInput $BG1 $F1 $BG2 $F2
   checkInput $BG1 $F1 $BG2 $F2
   setColor $BG1 $F1 $BG2 $F2
   output

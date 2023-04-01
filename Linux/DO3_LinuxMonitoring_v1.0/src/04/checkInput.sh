@@ -2,7 +2,7 @@
 
 checkInput() {
   # CHECK FOR EMTY ARG
-  if [[ -z $1 ]] || [[ -z $2 ]] || [[ -z $3 ]] || [[ -z $4 ]]; then
+  if [[ -z $1 || -z $2 || -z $3 || -z $4 ]]; then
     BG1=3; F1=1; BG2=4; F2=1;
   fi
   # CHECK FOR EXPECTED ARG
@@ -12,7 +12,7 @@ checkInput() {
     fi
   done
   # CHECK FOR DIFF COLORS
-  if [[ $1 = $2 ]] || [[ $3 = $4 ]]; then
+  if [[ $1 = $2 || $3 = $4 ]]; then
     error "background color and font color should be different"
   fi
 }
